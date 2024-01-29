@@ -24,7 +24,7 @@ const GalleryImages = ({gallery}) => {
 
         fetchData();
 
-    }, []);
+    }, [galleryName]);
 
     return (
         <div>
