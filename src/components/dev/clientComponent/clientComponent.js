@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react';
 import styles from './clientComponent.module.css';
 import DebugJson from '../debugJson/debugJson';
 
-const ClientComponent = () => {
+const ClientComponent = ({gallery = 'obscura'}) => {
 
     const [data, setData] = useState([]); // Vi sætter data state til at være et tomt array som udgangspunkt.
+    const [galleryName, setGalleryName] = useState(gallery);
 
     // Hook der kaldes når "html"´en er klar.
     useEffect(() => {
@@ -14,7 +15,7 @@ const ClientComponent = () => {
         const fetchData = async () => {
 
             // Vi fetcher fra vores endpoint.
-            const response = await fetch(`http://localhost:3000/api/authors`);
+            const response = await fetch(`http://localhost:3000/api/authors?gallery=${galleryName}`);
 
             // Vi omdanner vores response fra tekst til json.
             const result = await response.json();
@@ -27,7 +28,7 @@ const ClientComponent = () => {
         // Vi kalder fetch data funktionen.
         fetchData();
 
-    }, []);
+    }, [galleryName]);
 
     // Vores Template
     return (
@@ -37,6 +38,11 @@ const ClientComponent = () => {
             <div className={styles.header}>
                 <h1>Client Component</h1>
                 <p>Fetching Data</p>
+                <div>
+                    <h2>Gallery {galleryName}</h2>
+                        <button onClick={() => setGalleryName('umbra')}>UMBRA</button>
+                        <button onClick={() => setGalleryName('obscura')}>OBSCURA</button>
+                </div>
             </div>
 
             {/* Vi udskriver indholdet af data */}
