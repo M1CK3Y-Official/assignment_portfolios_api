@@ -33,7 +33,7 @@ const AuthorsCollection = () => {
                 <DebugJson key={index} content={data.author} />
             ))}
 
-            <AuthorsImages name={'Lena Riis'}></AuthorsImages>
+            <AuthorsImages name={'Mikkel Schwitzer'}></AuthorsImages>
 
         </div>
     )

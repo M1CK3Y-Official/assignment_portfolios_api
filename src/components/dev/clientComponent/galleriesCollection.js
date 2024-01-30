@@ -6,10 +6,10 @@ import GalleryImages from "./galleryImages";
 
 
 
-const GalleriesCollection = () => {
+const GalleriesCollection = ({gallery}) => {
 
     const [data, setData] = useState([]); 
-    const [galleryName, setGalleryName] = useState([]); 
+    const [galleryName, setGalleryName] = useState(gallery); 
 
 
     useEffect(() => {
@@ -31,14 +31,13 @@ const GalleriesCollection = () => {
     return (
         <div>
 
-            <button onClick={() => setGalleryName('umbra')}></button>
-            <button onClick={() => setGalleryName('obscura')}></button>
+            
+            { data.map((data, index) => (
+                <button key={index} onClick={() => setGalleryName( `${data.name}` )}>{data.name}</button>
+            ))}
 
-            {data.map((data, index) => (
-                <DebugJson key={index} content={data.name} />
-                ))}
-
-            <GalleryImages gallery={galleryName}></GalleryImages>
+            <h1>{galleryName}</h1>
+            {galleryName ? <GalleryImages gallery={galleryName} /> : ''}
 
         </div>
     )

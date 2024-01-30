@@ -7,7 +7,7 @@ export default async function Page() {
 
   return (
     <main className={styles.page}>
-      <GalleriesCollection gallery={'obscura'}></GalleriesCollection>
+      <GalleriesCollection ></GalleriesCollection>
     </main>
   )
 }

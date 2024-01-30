@@ -1,5 +1,5 @@
 import './globals.css'
-import { oswaldFont } from '@/utils/fonts';
+import { poppinsFont } from '@/utils/fonts';
 
 export const metadata = {
   title: 'MediaCollege Denmark',
@@ -12,7 +12,7 @@ export default function RootLayout({ children, params }) {
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={oswaldFont.className}>
+      <body className={poppinsFont.className}>
         {children}
       </body>
     </html>
